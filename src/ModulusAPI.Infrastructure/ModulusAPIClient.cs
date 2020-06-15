@@ -80,10 +80,10 @@ namespace CluedIn.Crawling.ModulusAPI.Infrastructure
                 {
                     while (!parser.EndOfData)
                     {
+                        var id = parser.ReadLine();
                         var client = new RestClient(url);
-                        var request = new RestRequest("persons/{individ_id}", Method.GET);
+                        var request = new RestRequest("/modulus-api/persons/"+id, Method.GET);
                         request.AddHeader("Content-type", "application/json");
-                        request.AddParameter("individ_id", parser.ReadLine(), ParameterType.UrlSegment);
                         var response = client.ExecuteTaskAsync<ModulusAPIResponse>(request).Result.Data;
                         yield return response;
                     }
