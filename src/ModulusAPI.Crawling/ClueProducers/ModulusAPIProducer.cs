@@ -33,6 +33,9 @@ namespace CluedIn.Crawling.ModulusAPI.ClueProducers
 
             var data = clue.Data.EntityData;
 
+            if (!string.IsNullOrWhiteSpace(input.Data.Individ_id))
+                data.Codes.Add(new EntityCode(EntityType.Infrastructure.User, "Modulus", input.Data.Individ_id));
+
             if (!string.IsNullOrWhiteSpace(input.Data.First_name) && !string.IsNullOrWhiteSpace(input.Data.Surname))
             {
                 data.Name = input.Data.First_name.ToString() + ' ' + input.Data.Surname.ToString();
