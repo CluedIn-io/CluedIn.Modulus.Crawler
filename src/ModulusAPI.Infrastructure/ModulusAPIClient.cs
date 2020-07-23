@@ -72,22 +72,17 @@ namespace CluedIn.Crawling.ModulusAPI.Infrastructure
             return new AccountInformation("", "");
         }
 
-        public IEnumerable<ModulusAPIResponse> GetResponse(string filepath, string url)
+        public IEnumerable<ModulusAPIResponse> GetResponse(string url)
         {
-            foreach (var item in Directory.GetFiles(filepath, "modulusAPIpeople.txt"))
+            //TODO replace with ids for the api call
+            var listOfIds = new string[] { "1", "2", "274981" };
+            foreach (var item in listOfIds)
             {
-                using (var parser = new TextFieldParser(item))
-                {
-                    while (!parser.EndOfData)
-                    {
-                        var id = parser.ReadLine();
-                        var client = new RestClient(url);
-                        var request = new RestRequest("/modulus-api/persons/"+id, Method.GET);
-                        request.AddHeader("Content-type", "application/json");
-                        var response = client.ExecuteTaskAsync<ModulusAPIResponse>(request).Result.Data;
-                        yield return response;
-                    }
-                }
+                var client = new RestClient(url);
+                var request = new RestRequest("/modulus-api/persons/" + item, Method.GET);
+                request.AddHeader("Content-type", "application/json");
+                var response = client.ExecuteTaskAsync<ModulusAPIResponse>(request).Result.Data;
+                yield return response;
             }
         }
     }

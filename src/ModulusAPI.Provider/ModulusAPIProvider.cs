@@ -40,10 +40,6 @@ namespace CluedIn.Provider.ModulusAPI
             var modulusapiCrawlJobData = new ModulusAPICrawlJobData();
             if (configuration.ContainsKey(ModulusAPIConstants.KeyName.ApiKey))
             { modulusapiCrawlJobData.ApiKey = configuration[ModulusAPIConstants.KeyName.ApiKey].ToString(); }
-            if (configuration.ContainsKey(ModulusAPIConstants.KeyName.FilePath))
-            {
-                modulusapiCrawlJobData.FilePath = configuration[ModulusAPIConstants.KeyName.FilePath].ToString();
-            }
             if (configuration.ContainsKey(ModulusAPIConstants.KeyName.Url))
             {
                 modulusapiCrawlJobData.Url = configuration[ModulusAPIConstants.KeyName.Url].ToString();

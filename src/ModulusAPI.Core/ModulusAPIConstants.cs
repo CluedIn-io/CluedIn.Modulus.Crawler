@@ -10,7 +10,6 @@ namespace CluedIn.Crawling.ModulusAPI.Core
         public struct KeyName
         {
             public const string ApiKey = nameof(ApiKey);
-            public const string FilePath = nameof(FilePath);
             public const string Url = nameof(Url);
         }
 

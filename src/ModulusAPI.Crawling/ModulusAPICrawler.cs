@@ -24,7 +24,7 @@ namespace CluedIn.Crawling.ModulusAPI
             var client = clientFactory.CreateNew(modulusapicrawlJobData);
 
             //retrieve data from provider and yield objects
-            foreach (var item in client.GetResponse(modulusapicrawlJobData.FilePath, modulusapicrawlJobData.Url))
+            foreach (var item in client.GetResponse(modulusapicrawlJobData.Url))
             {
                 yield return item;
             }

@@ -5,7 +5,6 @@ namespace CluedIn.Crawling.ModulusAPI.Core
     public class ModulusAPICrawlJobData : CrawlJobData
     {
         public string ApiKey { get; set; }
-        public string FilePath { get; set; }
         public string Url { get; set; }
 
     }
