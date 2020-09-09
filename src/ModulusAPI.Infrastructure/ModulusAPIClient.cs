@@ -8,6 +8,7 @@ using CluedIn.Core.Logging;
 using CluedIn.Core.Providers;
 using CluedIn.Crawling.ModulusAPI.Core;
 using CluedIn.Crawling.ModulusAPI.Core.Models;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualBasic.FileIO;
 using Newtonsoft.Json;
 using RestSharp;
@@ -23,11 +24,11 @@ namespace CluedIn.Crawling.ModulusAPI.Infrastructure
     {
         private const string BaseUri = "http://sample.com";
 
-        private readonly ILogger log;
+        private readonly ILogger<ModulusAPIClient> log;
 
         private readonly IRestClient client;
 
-        public ModulusAPIClient(ILogger log, ModulusAPICrawlJobData modulusapiCrawlJobData, IRestClient client) // TODO: pass on any extra dependencies
+        public ModulusAPIClient(ILogger<ModulusAPIClient> log, ModulusAPICrawlJobData modulusapiCrawlJobData, IRestClient client) // TODO: pass on any extra dependencies
         {
             if (modulusapiCrawlJobData == null)
             {
@@ -56,7 +57,7 @@ namespace CluedIn.Crawling.ModulusAPI.Infrastructure
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 var diagnosticMessage = $"Request to {client.BaseUrl}{url} failed, response {response.ErrorMessage} ({response.StatusCode})";
-                log.Error(() => diagnosticMessage);
+                log.LogError(diagnosticMessage);
                 throw new InvalidOperationException($"Communication to jsonplaceholder unavailable. {diagnosticMessage}");
             }
 

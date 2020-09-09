@@ -25,11 +25,8 @@ namespace CluedIn.Crawling.ModulusAPI.Vocabularies
 
             });
 
-            AddMapping(Individ_id, CluedIn.Lederne.Common.Vocabularies.LederneVocabularies.Person.Individ_id);
-            AddMapping(Cpr_no, CluedIn.Lederne.Common.Vocabularies.LederneVocabularies.Person.CPRnummer);
-            AddMapping(Surname, CluedIn.Lederne.Common.Vocabularies.LederneVocabularies.Person.Efternavn);
-            AddMapping(First_name, CluedIn.Lederne.Common.Vocabularies.LederneVocabularies.Person.Fornavn);
-            AddMapping(Membership_no, CluedIn.Lederne.Common.Vocabularies.LederneVocabularies.Person.Medlemsnummer);
+            AddMapping(First_name, CluedIn.Core.Data.Vocabularies.Vocabularies.CluedInPerson.FirstName);
+            AddMapping(Surname, CluedIn.Core.Data.Vocabularies.Vocabularies.CluedInPerson.LastName);
         }
 
         public VocabularyKey Individ_id { get; internal set; }
